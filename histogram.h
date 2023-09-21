@@ -122,8 +122,8 @@ void initHistograms()
   int BackOrFrontPmts[] = {4,5,6,7,0,1,2,3,12,13,14,15,8,9,10,11};
   for(int i=0;i<16;i++) {
 
-    pmtChargeCorrelationFrontAndBackLayer[i] = new TH2F(Form("pmtChargeCorrelationFrontAndBackLayer%d_H",i),Form(";PMT %d;PMT %d",i, BackOrFrontPmts[i]),/*4196,-100.5,4095.5*/200,3799.5,4095.5,4196,-100.5,4095.5);
-    pmtTimeCorrelationFrontAndBackLayer[i] = new TH2F(Form("pmtTimeCorrelationFrontAndBackLayer%d_H",i),Form(";PMT %d;PMT %d",i, BackOrFrontPmts[i]),/*4196,-100.5,4095.5*/800,-10,30,800,-10,30);
+    pmtChargeCorrelationFrontAndBackLayer[i] = new TH2F(Form("pmtChargeCorrelationFrontAndBackLayer%d_H",i),Form(";PMT %d;PMT %d",i, BackOrFrontPmts[i]),4196,-100.5,4095.5,4196,-100.5,4095.5);
+    pmtTimeCorrelationFrontAndBackLayer[i] = new TH2F(Form("pmtTimeCorrelationFrontAndBackLayer%d_H",i),Form(";PMT %d;PMT %d",i, BackOrFrontPmts[i]),/*4196,-100.5,4095.5*/800,-30,30,800,-30,30);
     pmtBC_H[i]=new TH1F(Form("pmtBC_%d_H",i),Form(";BC ID for PMT %d;Entries",i),3564,-0.5,3563.5);
     adcPMT_H[i]=new TH1F(Form("adcPMT_%d_H",i),Form(";ADC counts for PMT %d;Entries",i),4110,-13.5,4096.5);
     adcPMTWithBC_H[i]=new TH2F(Form("adcPMTWithBC_%d_H",i),Form(";BC ID;ADC counts for PMT %d",i),3564,-0.5,3563.5, 4110,-13.5,4096.5);

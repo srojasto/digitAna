@@ -61,10 +61,10 @@ void fillCoincCharge(int iPMT, float adc, float time)
 
 //-----------------------------------------------
 // main analysis: get BC maps, time and adc for each PMT
-void anaDigits(int useFeeBits= 3, unsigned int runNumber = 541518, bool processNTrees=1,bool processnBC=1,int iFile=0,  int adcSaturation = 3800)
+void anaDigits(int useFeeBits= 3, unsigned int runNumber = 540645, bool processNTrees=1,bool processnBC=1,int iFile=0,  int adcSaturation = 1, const char * filePath = "~/cernbox/fdd/runsFDD/runs2023")
 {
-  const int n_PMTs = 19;   // # of channels
-  double adcCoincThreshold= 0; // Coincidencia threshold carga
+  const int n_PMTs = 16;   // # of channels
+  double adcCoincThreshold= 10; // Coincidencia threshold carga
   cout << "Proccessing the run number " << runNumber << endl;
   //------get BC filling pattern------
   BCPattern Aside{};
@@ -84,9 +84,11 @@ void anaDigits(int useFeeBits= 3, unsigned int runNumber = 541518, bool processN
 
   // open file and set the branches
   TFile* digitFile = 0;
-  if (iFile == 0) digitFile = TFile::Open(Form("~/Documentos/FDD_Runs/FDD_Data/Laser_Crosstalk_16August2023/%i/o2_fdddigits.root",runNumber));
+  if (iFile == 0) digitFile = TFile::Open(Form("~/cernbox/fdd/runsFDD/runs2023/%i/o2_fdddigits.root", runNumber));
   else if (iFile == 1) digitFile = TFile::Open("o2_fdddigits.root");
   else return;
+
+  printf("\n\r File to open:%s/%i/o2_fdddigits.root\n\r", filePath, runNumber);
 
   TTree* digitTree = (TTree*)digitFile->Get("o2sim");
   std::vector<o2::fdd::Digit> digitsBC, *digitsBCPtr = &digitsBC;
